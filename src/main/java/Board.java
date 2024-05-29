@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+
 public class Board {
     public char [][] cells;
 
@@ -31,5 +33,25 @@ public class Board {
         }
         return true;
     }
-    
+
+    public void clear() {
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[0].length - 1; j++) {
+
+                cells[i][j] = ' ';
+            }
+        }
+    }
+
+        public void print(){
+            System.out.println("______");
+            for(int i = 0; i < cells.length; i++) {
+                System.out.println("| ");
+                for (int j = 0; j < cells[0].length; j++) {
+                    System.out.println(cells[i][j] + " | ");
+                }
+            }
+            System.out.println("\n______");
+        }
+
 }
