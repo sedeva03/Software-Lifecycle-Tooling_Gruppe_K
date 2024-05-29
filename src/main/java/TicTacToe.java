@@ -12,4 +12,12 @@ public class TicTacToe {
 
     }
 
+    public void switchCurrentPlayer(){
+        if(player1==currentPlayer){
+            currentPlayer = player2;
+        }
+        else {
+            currentPlayer = player1;
+        }
+    }
 }
