@@ -44,15 +44,16 @@ public class Board {
     }
 
     public void print(){
-        System.out.println("______");
+        System.out.println("-------------");
         for(int i = 0; i < cells.length; i++) {
-            System.out.println("| ");
+            System.out.print("| ");
             for (int j = 0; j < cells[0].length; j++) {
-                System.out.println(cells[i][j] + " | ");
+                System.out.print(cells[i][j] + " | ");
             }
+            System.out.println("\n-------------");
         }
-        System.out.println("\n______");
     }
+
     public boolean isWinner(char marker) {
         // checking rows
         for (int i = 0; i < 3; i++) {
