@@ -19,18 +19,20 @@ public class TicTacToe {
     }
     public void start() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("row(0-2):");
-        int row = scanner.nextInt();
-        System.out.print("column(0-2):");
-        int col = scanner.nextInt();
-        if (board.isCellEmpty(row, col)) {
-            board.place(row, col, currentPlayer.getMarker());
-            switchCurrentPlayer();
+        while (!board.isFull()) {
+            System.out.println("Current Player: " + currentPlayer.marker);
+            board.print();
+            System.out.print("row(0-2):");
+            int row = scanner.nextInt();
+            System.out.print("column(0-2):");
+            int col = scanner.nextInt();
+            if (board.isCellEmpty(row, col)) {
+                board.place(row, col, currentPlayer.getMarker());
+                switchCurrentPlayer();
+            } else {
+                System.out.println("Invalid move. Try again.");
+            }
         }
-        else {
-            System.out.println("Invalid move. Try again.");
-        }
-        board.print();
         scanner.close();
     }
     private boolean hasWinner() {
