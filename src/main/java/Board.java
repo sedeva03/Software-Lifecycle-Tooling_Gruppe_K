@@ -43,15 +43,38 @@ public class Board {
         }
     }
 
-        public void print(){
-            System.out.println("______");
-            for(int i = 0; i < cells.length; i++) {
-                System.out.println("| ");
-                for (int j = 0; j < cells[0].length; j++) {
-                    System.out.println(cells[i][j] + " | ");
-                }
+    public void print(){
+        System.out.println("______");
+        for(int i = 0; i < cells.length; i++) {
+            System.out.println("| ");
+            for (int j = 0; j < cells[0].length; j++) {
+                System.out.println(cells[i][j] + " | ");
             }
-            System.out.println("\n______");
         }
+        System.out.println("\n______");
+    }
+    public boolean isWinner(char marker) {
+        // checking rows
+        for (int i = 0; i < 3; i++) {
+            if (cells[i][0] == marker && cells[i][1] == marker && cells[i][2] == marker) {
+                return true;
+            }
+        }
+
+        // checking columns
+        for (int j = 0; j < 3; j++) {
+            if (cells[0][j] == marker && cells[1][j] == marker && cells[2][j] == marker) {
+                return true;
+            }
+        }
+
+        // checking diagonals
+        if ((cells[0][0] == marker && cells[1][1] == marker && cells[2][2] == marker) ||
+                (cells[0][2] == marker && cells[1][1] == marker && cells[2][0] == marker)) {
+            return true;
+        }
+
+        return false;
+    }
 
 }

@@ -11,7 +11,9 @@ public class TicTacToe {
         this.board = new Board();
 
     }
-
+    private boolean hasWinner() {
+        return board.isWinner(player1.getMarker()) || board.isWinner(player2.getMarker());
+    }
     public void switchCurrentPlayer(){
         if(player1==currentPlayer){
             currentPlayer = player2;
