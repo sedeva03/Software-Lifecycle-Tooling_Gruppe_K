@@ -26,6 +26,10 @@ public class TicTacToe {
             int row = scanner.nextInt();
             System.out.print("column(0-2):");
             int col = scanner.nextInt();
+            if(row<0 || row >2 || col<0||col>2){
+                System.out.println("Invalid move. Try again.");
+                continue;
+            }
             if (board.isCellEmpty(row, col)) {
                 board.place(row, col, currentPlayer.getMarker());
                 switchCurrentPlayer();
