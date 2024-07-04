@@ -42,6 +42,7 @@ public class TicTacToe {
                 if (board.isCellEmpty(row, col)) {
                     board.place(row, col, currentPlayer.getMarker());
                     if (hasWinner()) {
+                      
                         board.print();
                         System.out.println("Player " + currentPlayer.getMarker() + " wins!");
                         if(currentPlayer==player1){
@@ -51,12 +52,11 @@ public class TicTacToe {
                             System.out.println("Player " + player2.getMarker() + " loses");
                         }
 
+
+
                         gameEnded = true;
-                    } else if (board.isFull()) {
-                        board.print();
-                        System.out.println("The game is a draw!");
-                        gameEnded = true;
-                    } else {
+                    }
+                     else {
                         switchCurrentPlayer();
                     }
                 } else {
@@ -67,7 +67,7 @@ public class TicTacToe {
             System.out.print("Do you want to play again? (yes/no): ");
             playAgain = scanner.next().equalsIgnoreCase("yes");
         } while (playAgain);
-
+      
         scanner.close();
     }
     private boolean hasWinner() {
