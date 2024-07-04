@@ -44,6 +44,13 @@ public class TicTacToe {
                     if (hasWinner()) {
                         board.print();
                         System.out.println("Player " + currentPlayer.getMarker() + " wins!");
+                        if(currentPlayer==player1){
+                            System.out.println("Player " + player1.getMarker() + " loses");
+                        }
+                        if(currentPlayer==player2){
+                            System.out.println("Player " + player2.getMarker() + " loses");
+                        }
+
                         gameEnded = true;
                     } else if (board.isFull()) {
                         board.print();
