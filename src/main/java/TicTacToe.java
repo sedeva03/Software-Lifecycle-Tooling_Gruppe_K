@@ -60,7 +60,7 @@ public class TicTacToe {
             System.out.print("Do you want to play again? (yes/no): ");
             playAgain = scanner.next().equalsIgnoreCase("yes");
         } while (playAgain);
-
+      
         scanner.close();
     }
     private boolean hasWinner() {
