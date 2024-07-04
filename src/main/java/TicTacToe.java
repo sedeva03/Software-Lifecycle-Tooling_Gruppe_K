@@ -42,14 +42,9 @@ public class TicTacToe {
                 if (board.isCellEmpty(row, col)) {
                     board.place(row, col, currentPlayer.getMarker());
                     if (hasWinner()) {
-                        board.print();
-                        System.out.println("Player " + currentPlayer.getMarker() + " wins!");
                         gameEnded = true;
-                    } else if (board.isFull()) {
-                        board.print();
-                        System.out.println("The game is a draw!");
-                        gameEnded = true;
-                    } else {
+                    }
+                     else {
                         switchCurrentPlayer();
                     }
                 } else {
