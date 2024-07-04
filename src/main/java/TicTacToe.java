@@ -19,24 +19,48 @@ public class TicTacToe {
     }
     public void start() {
         Scanner scanner = new Scanner(System.in);
-        while (!board.isFull()) {
-            System.out.println("Current Player: " + currentPlayer.marker);
-            board.print();
-            System.out.print("row(0-2):");
-            int row = scanner.nextInt();
-            System.out.print("column(0-2):");
-            int col = scanner.nextInt();
-            if(row<0 || row >2 || col<0||col>2){
-                System.out.println("Invalid move. Try again.");
-                continue;
+        boolean playAgain;
+
+        do {
+            board.clear();
+            currentPlayer = player1;
+            boolean gameEnded = false;
+
+            while (!gameEnded) {
+                System.out.println("Current Player: " + currentPlayer.getMarker());
+                board.print();
+                System.out.print("row(0-2): ");
+                int row = scanner.nextInt();
+                System.out.print("column(0-2): ");
+                int col = scanner.nextInt();
+
+                if (row < 0 || row > 2 || col < 0 || col > 2) {
+                    System.out.println("Invalid move. Try again.");
+                    continue;
+                }
+
+                if (board.isCellEmpty(row, col)) {
+                    board.place(row, col, currentPlayer.getMarker());
+                    if (hasWinner()) {
+                        board.print();
+                        System.out.println("Player " + currentPlayer.getMarker() + " wins!");
+                        gameEnded = true;
+                    } else if (board.isFull()) {
+                        board.print();
+                        System.out.println("The game is a draw!");
+                        gameEnded = true;
+                    } else {
+                        switchCurrentPlayer();
+                    }
+                } else {
+                    System.out.println("Invalid move. Try again.");
+                }
             }
-            if (board.isCellEmpty(row, col)) {
-                board.place(row, col, currentPlayer.getMarker());
-                switchCurrentPlayer();
-            } else {
-                System.out.println("Invalid move. Try again.");
-            }
-        }
+
+            System.out.print("Do you want to play again? (yes/no): ");
+            playAgain = scanner.next().equalsIgnoreCase("yes");
+        } while (playAgain);
+      
         scanner.close();
     }
     private boolean hasWinner() {
